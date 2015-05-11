@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"{% if (o.htmlWebpackPlugin.files.manifest) { %} manifest="{%= o.webpackConfig.output.publicPath + o.htmlWebpackPlugin.files.manifest %}"{% } %}>
+    <head>
+        <script>
+            (function (window) {
+                var handleLoad = function () {
+                    if (window.parent) {
+                        var cache = parent.applicationCache;
+                        var handleCacheEvent, event;
+                        if (cache) {
+                            handleCacheEvent = function (event) {
+                                console.log(event);
+                            };
+
+                            cache.addEventListener('cached',      handleCacheEvent, false);
+                            cache.addEventListener('checking',    handleCacheEvent, false);
+                            cache.addEventListener('downloading', handleCacheEvent, false);
+                            cache.addEventListener('error',       handleCacheEvent, false);
+                            cache.addEventListener('noupdate',    handleCacheEvent, false);
+                            cache.addEventListener('obsolete',    handleCacheEvent, false);
+                            cache.addEventListener('progress',    handleCacheEvent, false);
+                            cache.addEventListener('updateready', handleCacheEvent, false);
+
+                            event = document.createEvent('Event');
+                            event.initEvent('status', false, false);
+                            event.target = cache;
+                            event.status = cache.status;
+                            cache.dispatchEvent(event);
+                        }
+                    }
+                    window.removeEventListener('load', handleLoad);
+                };
+                window.addEventListener('load', handleLoad);
+            })(this);
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

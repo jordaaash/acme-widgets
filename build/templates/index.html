@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>{% for (var css in o.htmlWebpackPlugin.files.css) { %}
+        <link rel="stylesheet" href="{%= o.htmlWebpackPlugin.files.css[css] %}"/>{% } %}{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+        <script charset="utf-8" src="{%= o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>{% } %}
+    </head>
+    <body>
+        <div id="body"></div>{% if (o.htmlWebpackPlugin.files.manifest) { %}
+        <iframe src="{%= o.htmlWebpackPlugin.options.manifest %}manifest.html?{%= o.webpack.hash %}" style="display:none;"></iframe>{% } %}
+    </body>
+</html>

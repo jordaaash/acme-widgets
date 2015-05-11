@@ -1,0 +1,61 @@
+{
+    "name":            "acme-widgets",
+    "version":         "0.1.0",
+    "description":     "ACME Widgets",
+    "author":          "Jordan Sexton <jordan@jordansexton.com>",
+    "contributors":    [
+        {
+            "name":  "Jordan Sexton",
+            "email": "jordan@jordansexton.com"
+        }
+    ],
+    "private":         true,
+    "scripts":         {
+        "start":   "iojs --harmony_classes server/index.js",
+        "node":    "node --harmony server/index.js",
+        "kill":    "kill $(lsof -t -i:3001); kill $(lsof -t -i:3002)",
+        "server":  "webpack-dev-server --config build/webpack.js --content-base public/ --hot --progress --colors",
+        "webpack": "webpack --config build/webpack.js --progress --colors",
+        "watch":   "webpack --watch --config build/webpack.js --progress --colors"
+    },
+    "engines":         {
+        "node": "^0.12.0",
+        "iojs": "^1.6.0"
+    },
+    "dependencies":    {
+        "babel-core":                  "latest",
+        "bluebird":                    "^2.x",
+        "classnames":                  "latest",
+        "koa":                         "latest",
+        "koa-compress":                "latest",
+        "koa-conditional-get":         "latest",
+        "koa-etag":                    "latest",
+        "koa-logger":                  "latest",
+        "koa-response-time":           "latest",
+        "koa-send":                    "latest",
+        "profanity-filter":            "latest",
+        "long-stack-traces":           "latest",
+        "react-router":                "latest",
+        "superagent-bluebird-promise": "latest"
+    },
+    "devDependencies": {
+        "appcache-webpack-plugin":     "jordansexton/appcache-webpack-plugin",
+        "babel-eslint":                "latest",
+        "babel-loader":                "latest",
+        "babel-runtime":               "latest",
+        "css-loader":                  "latest",
+        "debug":                       "latest",
+        "dotenv":                      "latest",
+        "eslint":                      "latest",
+        "eslint-plugin-react":         "latest",
+        "extract-text-webpack-plugin": "latest",
+        "html-webpack-plugin":         "ampedandwired/html-webpack-plugin",
+        "normalize.css":               "latest",
+        "react-hot-loader":            "latest",
+        "style-loader":                "latest",
+        "stylus":                      "latest",
+        "stylus-loader":               "jordansexton/stylus-loader",
+        "webpack":                     "latest",
+        "webpack-dev-server":          "jordansexton/webpack-dev-server#installable"
+    }
+}

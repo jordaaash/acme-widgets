@@ -1,0 +1,39 @@
+'use strict';
+
+var React     = require('react');
+
+var HomePage = React.createClass({
+    getInitialState: function () {
+        return {
+            title: "Lex's Home Page"
+        };
+    },
+    render: function () {
+        return (
+            <div className="home-page">
+                <div className="home-header">
+                    <h1 className="home-title">{ this.state.title }</h1>
+                </div>
+                <div className="home-body">
+                    <input
+                        className="home-input"
+                        onChange={ this.handleChange }
+                        type="text"
+                        value={ this.state.title }/>
+                    <ol className="home-list">
+                        <li><img src="http://lorempixel.com/320/320/"/></li>
+                        <li><img src="http://lorempixel.com/320/320/"/></li>
+                        <li><img src="http://lorempixel.com/320/320/"/></li>
+                    </ol>
+                    <p className="home-content">This is the home page.</p>
+                </div>
+            </div>
+        );
+    },
+    handleChange: function (event) {
+        var title = event.target.value;
+        this.setState({ title: title });
+    }
+});
+
+module.exports = HomePage;
